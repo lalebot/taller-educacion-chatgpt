@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title></title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/solarized.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Taller de formación para docentes
+### Desafíos y posibilidades que generan los modelos de inteligencia artificial de procesamiento de lenguaje natural, el caso ChatGPT
+
+*Asesoría Pedagógica FCA UNR*
+</div>
+
+<aside class="notes"><ul>
+<li>presentación<ul>
+<li>que es</li>
+<li>límites</li>
+<li>ejemplos</li>
+<li>trabajo en grupo</li>
+<li>buenas prácticas</li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230402203658.png" alt="" style="object-fit: scale-down">
+</div>
+
+<aside class="notes"><p>PRESENTACIÓN: Espacio de debate y reflexión sobre el impacto de la IA en la docencia, específicamente el chatGPT 
+    Nos motiva el hecho de estar viendo cambios radicales en las herramientas de IA disponibles. </p>
+<pre><code>Cambios demasiado recientes y demasiado vertiginosos. IA que generan imágenes, videos, que escriben libros de ciencia ficción, que componen poesías y demás.
+
+Institucion formadora de profsionales que se desembuelvan en el 2030 y 2040.
+
+¿Que impacto tienen estás herramientas en la docencia? ¿ Que impacto tienen en el estudiante? ¿Cómo se incorporan o ignoran en nuestras propuestas aulicas? Ejemplo, la descripción del taller. Historia y demás. Estamos para formar a profesionales que van a ejercer su profesión de acá a 5 o 10 años.
+</code></pre>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Una nueva revolución tecnológica
+
+- Internet
+- Google
+- Redes sociales
+
+-> Incertidumbre <-
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### ¿De qué hablamos cuando hablamos de IA?
+
+- Introducción a las IA y su aplicación en el ámbito educativo. 
+	- Inteligencia Artificial
+	- Modelo
+	- Modelo de Lenguaje
+	- ChatGPT
+</div>
+
+<aside class="notes"><p>Nuevos desafíos que emergen de la incorporación de las IA en la educación. - Posibilidades y limitaciones de las IA en la educación superior. - Experiencias y posibles usos de las IA en el proceso de formación.</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Límites de ChatGPT 3.5
+
+- Contiene información hasta septiembre 2021.
+- Inventa datos.
+- Incorpora sesgos que tienen los datos con los que fue entrenado.
+- Temas éticos y morales.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+- No da referencias bibliográficas o las fuentes de sus respuestas.
+- Desarrollo de habilidades críticas y pensamiento independiente.
+- No se conecta a internet.
+- Es de código cerrado.
+- Oligopolio.
+</div>
+
+<aside class="notes"><p>«Este modelo imita la forma en que nosotros nos expresamos, pero muchas veces las cosas que dice no están fundamentadas en la verdad. Lo que hace es decir una serie de cosas que tienen coherencia y sentido, pero que pueden ser totalmente falsas. No tiene la capacidad de distinguir lo verdadero de lo falso»
+    <em>¿Piensa?</em> La primera reflexión ante un sistema tan preciso es la duda sobre si este chatbot entiende y piensa por sí mismo. «El principio en el que se basa es algo tan sencillo como coger las palabras de un texto y predecir cuál es la siguiente palabra más probable y lo hace a partir de cantidades gigantescas datos de textos humanos. <em>¿Entiende o no?</em> Es un debate que existe. Se puede pensar que solo está haciendo estadísticas, pero, por otro lado, lo que se observa es que para muchas cosas es como si entendiera, porque sabe qué le estás pidiendo y sabe resolver la tarea»
+    <em>Sesgos:</em> Si el sistema se entrena con textos generados por personas, los posibles sesgos ideológicos predominantes en ellos también condicionarán a esta inteligencia artificial. 
+    <em>Oligopolio</em>: Además, estos modelos necesitan alimentarse de gran cantidad de datos y trabajar con máquinas muy potentes, algo que solo las grandes empresas pueden financiar. «Eso crea ciertos problemas. Uno de ellos es que se conviertan en un oligopolio, porque solo entidades muy grandes y con mucho dinero pueden entrenarlos. 
+    <em>Entrenado con Internet</em>: Se añade esto la desventaja que tienen las lenguas minoritarias con menos textos publicados y menor capacidad para entrenar bien al algoritmo.</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# IA y Educación Superior
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="callout callout-color-default">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-pencil-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+UNESCO
+
+</div>
+</div>
+<div class="callout-content">
+
+"el despliegue de las tecnologías de la IA en la educación debe tener como objetivo la mejora de las capacidades humanas y la protección de los derechos humanos con miras a una colaboración eficaz entre humanos y máquinas en la vida, el aprendizaje y el trabajo, así como en favor del desarrollo sostenible."
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="callout callout-color-default">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-pencil-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+UNESCO
+
+</div>
+</div>
+<div class="callout-content">
+
+El vínculo entre la IA y la educación consiste en tres ámbitos:
+
+- Aprender con la IA (utilizando las herramientas de IA en las aulas)
+
+- Aprender sobre la IA (sus tecnologías y técnicas)
+
+- Prepararse para la IA (comprender el impacto potencial de la IA en la vida humana)
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Desafíos para el docente universitario
+
+- Decidir qué vale la pena enseñar
+- Cómo vamos a enseñar 
+- De qué manera vamos a evaluar para comprobar si efectivamente aprendieron un contenido.
+</div>
+
+<aside class="notes"><p>Tareas, ejercicios, Evaluación</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Algunos Ejemplos
+</div>
+
+<aside class="notes"><ul>
+<li>Célula como si fuese una novela latinoamericana.<ul>
+<li>Explicar la cuenca acuífera de la pampa húmeda argentina con una metáfora de Harry Potter contada al estilo del martín fierro</li>
+<li>Matemáticas correctas: Explicadas para niños, Canción sobre los números complejos.</li>
+<li>Nuevas palabras y luego hacer un poema </li>
+<li>Color nuevo </li>
+<li>Que haga una adivinanza </li>
+<li>Jugar al ahorcado </li>
+<li>Adivinar la persona</li>
+</ul>
+</li>
+</ul>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Propósito
+Generar un espacio de formación e intercambio sobre los desafíos que generan las Inteligencias Artificiales (IA) en la educación superior. En particular, se tratará de abordar la forma en que estas tecnologías pueden ser utilizadas para mejorar el proceso de enseñanza y aprendizaje, así como también se discutirán las limitaciones y desafíos éticos que plantean las IA en la educación superior y en la formación de futuros profesionales.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Justificación
+La irrupción de las IA en la educación es un proceso inminente que se viene gestando desde hace varios años pero que tomó relevancia recientemente. Por ello, se hace cada vez más necesario que los docentes se formen en el uso de estas tecnologías para poder adaptarse a los nuevos tiempos. Por otro lado, es importante también reflexionar sobre los desafíos éticos que plantean las IA en la educación y cómo podemos trabajar para minimizar sus posibles efectos negativos. Se propone la realización de una jornada introductoria sobre dicha temática.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230404094457.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230404095227.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230404095544.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Debate grupal
+
+1 - ¿Cuáles son los potenciales usos en la enseñanza? (Desde el lado del docente)
+2 - ¿Cuáles son los potenciales usos en el proceso de aprendizaje? (Desde el lado del alumno)
+3 - ¿Cuáles son las desventajas de usar ChatGPT en el proceso de enseñanza-aprendizaje?
+4 - ¿Cuáles son las ventajas?
+</div>
+
+<aside class="notes"><p>¿Cómo afectan las IA a la docencia, investigación y la extensión? ¿Cómo impacta en la educación virtual? ¿Cómo proponer un buen uso? ¿Cómo impacta en la enseñanza y su evaluación?</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Usos en el proceso de enseñanza
+
+#### Contenidos y materiales
+- Mejorar la redacción. 
+- Generar síntesis, resúmenes, ensayos.
+- Expande y explica contenido.
+- Ejemplos, metáforas y disparadores. 
+- Curiosidades. 
+- Sugerencias de materiales y recursos.
+- Estrategias de memorización.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### Propuestas de enseñanza
+- Generación de ideas.
+- Crear juegos lúdicos.
+- Haga pasar por personajes históricos para que puedan preguntarle.
+- Enfoque centrado en generar buenas preguntas para resolver problemas. Demanda una comprensión profunda del problema.
+- Llevar a una consigna práctica el desarrollo teórico
+</div>
+
+<aside class="notes"><p>(a) Planificación educativa, tambien en la (b) planificación de los aprendizajes, en la © generación  de materiales didácticos, en el (d) diseño de actividades de aprendizaje y por último  en el (e) desarrollo de procesos de evaluación. Todos los vídeos contienen una serie de ejemplos   que te permitiran utilizarlos en clase, en la sección de material de apoyo, tambien compartiré</p>
+</aside></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Usos en el proceso de aprendizaje
+
+- Pedir explicaciones variadas.
+- Ejemplificar con casos reales.
+- Tutor personal.
+- Autoformación académica 
+- aprender a hacer buenas preguntas.
+- ¡Ojo! Buscar fundamentos y cuestionar las respuestas.
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# promps
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="callout callout-color9">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-quote-left" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+¿Qué insectos afectan los cultivos de maíz?
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230411092735.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Contexto
+
+<div class="callout callout-color9">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-quote-left" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+¿Cuáles son los insectos que afectan los cultivos de maíz en Argentina en primavera?
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230411092834.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Responde como
+
+<div class="callout callout-color9">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-quote-left" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+*Responde como un ingeniero agrónomo*, ¿Cuáles son los insectos que afectan los cultivos de maíz en Argentina en primavera?
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230411093015.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+--- 
+
+### Formato de salida
+
+<div class="callout callout-color9">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-quote-left" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Responde como un ingeniero agrónomo, ¿Cuáles son los insectos que afectan los cultivos de maíz en Argentina en primavera? *Muestralo en formato de tabla indicando insecto y cómo afecta.**
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+
+_También puede ser con emojis, lista numerada, tablas con columnas, tablas comparativas._
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230411093142.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Verbos
+
+<div class="callout callout-color9">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-quote-left" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Responde como un ingeniero agrónomo, ¿Cuáles son los insectos que afectan los cultivos de maíz en Argentina en primavera? *Argumenta* la respuesta con una tabla indicando insecto, argumento y cómo afecta.
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+
+- Argumenta, Explica, Compara
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230411093340.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Para quién
+
+<div class="callout callout-color9">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-quote-left" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Responde como un ingeniero agrónomo, ¿Cuáles son los insectos que afectan los cultivos de maíz en Argentina en primavera? Explica la respuesta para *estudiantes universitarios* con una tabla indicando insecto, argumento y cómo afecta.
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230411093721.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+### Combinación
+
+<div class="callout callout-color9">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-quote-left" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Responde como un ingeniero agrónomo, lista los 3 principales insectos que afectan los cultivos de maíz en Argentina en primavera. Argumenta la respuesta para ser aprendido por estudiantes universitarios con una tabla indicando insecto, argumento y cómo afecta. Luego arma una tabla con emojis comparando las distintas estrategias para combatirlos.
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Docencia/Pasted image 20230411093924.png" alt="" style="object-fit: scale-down">
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+#### ChatGPT y Educación
+
+-   [ChatGPT User Experience: Implications for Education](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4312418)
+-   [Educator considerations for ChatGPT](https://platform.openai.com/docs/chatgpt-education)
+-   [ChatGPT and learning design: what online content creation opportunities does it offer?](https://www.timeshighereducation.com/campus/chatgpt-and-learning-design-what-online-content-creation-opportunities-does-it-offer)
+-   [ChatGPT for Learning and Teaching](https://www.wits.ac.za/media/wits-university/learning-and-teaching/cltd/documents/ChatGPT-for-learning-and-teaching.pdf)
+-   [What AI-generated lesson plans might mean for educators](https://www.timeshighereducation.com/campus/what-aigenerated-lesson-plans-might-mean-educators)
+-   [Practical Responses to ChatGPT and Other Generative AI](https://www.montclair.edu/faculty-excellence/teaching-resources/clear-course-design/practical-responses-to-chat-gpt/)
+-   [ChatGPT (AI) in Education - an Overview](https://drive.google.com/file/d/1fTtmGz2Cp2nd65mNfQzPyo3beWXc9j9m/view?fbclid=IwAR1fSHmdyH5qbsSJtwXFrgKafqfA8P6wdZwLkBj8ZdWbPde5aAT9OX6oW0I)
+-   [AI in education: ChatGPT is just the beginning](https://the-decoder.com/ai-in-education-chatgpt-is-just-the-beginning/)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Webs y recursos
+- [OpenIA](https://chat.openai.com/chat)
+- [Inteligencia artificial en las escuelas - UNESCO](https://es.unesco.org/themes/tic-educacion/inteligencia-artificial)
+- [Consenso de Beijing sobre la Inteligencia Artificial en la Educación](https://unesdoc.unesco.org/ark:/48223/pf0000368303/PDF/368303qaa.pdf.multi)
+- [Guía de uso responsable de la IA](https://linclearning.com/wp-content/uploads/GUIA-PARA-EL-USO-DE-IA-LINC-LATAM-1.pdf)
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 800px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Repositorio de la presentación
+
+
+¡Gracias!
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":800,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":false,"transition":"concave","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
