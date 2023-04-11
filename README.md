@@ -1,8 +1,6 @@
 # Repositorio del Taller
 
-## Seminario de actualización de la Especialización en Bioinformática UNR
-
-Fecha: 26/11/2022
+Fecha:
 
 Lugar: Facultad de Ciencias Agrarias - UNR
 
