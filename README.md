@@ -2,7 +2,8 @@
 
 ## Desafíos y posibilidades que generan los modelos de inteligencia artificial de procesamiento de lenguaje natural, el caso ChatGPT
 
----
+<img src="/images/ia.jpg" width="600">
+
 
 Fecha: 25/04/2023
 
