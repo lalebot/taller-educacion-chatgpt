@@ -4,10 +4,13 @@
 
 <img src="/images/ia.png" width="600">
 
+---
 
 Fecha: 25/04/2023
 
 Lugar: Facultad de Ciencias Agrarias - UNR
+
+Inscripción: https://forms.gle/nWj7HZ5YBvoroemb6
 
 Asesoría Pedagógica FCA UNR
 
