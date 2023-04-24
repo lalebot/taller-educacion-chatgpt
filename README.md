@@ -2,7 +2,7 @@
 
 ## Desafíos y posibilidades que generan los modelos de inteligencia artificial de procesamiento de lenguaje natural, el caso ChatGPT
 
-<img src="/images/banner.png">
+<img src="/images/banner.jpg">
 
 ---
 
